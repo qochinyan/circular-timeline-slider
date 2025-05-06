@@ -109,7 +109,7 @@ export default function TimeSliderBlock({ sampleData }: { sampleData: TimePeriod
           <div className="slider-overflow">
             {" "}
             <Swiper
-              onSwiper={(swiper) => {
+              onSwiper={(swiper: any) => {
                 swiperRef.current = swiper;
                 onSwiperInit(swiper);
               }}
