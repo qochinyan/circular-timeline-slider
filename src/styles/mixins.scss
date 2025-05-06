@@ -1,0 +1,7 @@
+@mixin flex($FD:row,$AI:center,$JC:center,$Gap:0px){
+    display: flex;
+    align-items: $AI;
+    justify-content: $JC;
+    flex-direction: $FD;
+    gap: $Gap;
+}

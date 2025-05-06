@@ -1,0 +1,176 @@
+@use "../../styles/vars.scss" as *;
+@use "../../styles/mixins.scss" as *;
+
+.block__container {
+  width: 1440px;
+  height: 100vh;
+  border-left: 1px solid $black-blue-10;
+  border-right: 1px solid $black-blue-10;
+  padding: 12vh 0 5vh 80px;
+  @include flex(column, start, space-between, 0px);
+  position: relative;
+  .years-block {
+    position: absolute;
+    top: 48.6%;
+    left: 49.4%;
+    transform: translate(-50%, -50%);
+    width: 973px;
+    @include flex(row, center, space-between, 0px);
+    span {
+      font-weight: 700;
+      font-size: 200px;
+      line-height: 160px;
+      letter-spacing: -2%;
+      font-family: "pt sans", sans-serif;
+      &.year-from {
+        color: $blue-purple;
+      }
+      &.year-to {
+        color: $purple;
+      }
+    }
+  }
+  .slider {
+    &__container {
+      @include flex(column, start, center, 56px);
+      .slider__switcher {
+        @include flex(column, start, center, 20px);
+        .switcher__description {
+          font-weight: 400;
+          font-size: 14px;
+          color: $black-blue;
+          height: 18px;
+          font-family: "pt sans", serif;
+        }
+        .switcher-buttons__box {
+          @include flex(row, center, start, 20px);
+        }
+      }
+      .slider-content__container {
+        &.animate {
+          animation: fadeIn 1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        position: relative;
+        height: 135px;
+        .slider-overflow {
+          width: 100%;
+          margin: 0 auto;
+          overflow: hidden;
+          .swiper-box {
+            width: 1280px;
+
+            .swiper-wrapper {
+              display: flex;
+            }
+            .swiper-slide {
+              flex: 0 0 auto;
+              min-width: 320px;
+              max-width: 400px;
+              height: 135px;
+              margin-right: 20px;
+              position: relative;
+              cursor: grab;
+              .slide-year {
+                position: absolute;
+                top: -0px;
+                left: -3px;
+                color: $blue;
+                font-size: 25px;
+                font-family: "Bebas Neue", sans-serif;
+                font-weight: 400;
+                line-height: 120%;
+                width: 41px;
+              }
+              .slide-description {
+                position: absolute;
+                top: 50px;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 30px;
+                color: $black-blue;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .horizontal-line {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    background-color: $black-blue-10;
+  }
+  .vertical-line {
+    z-index: -1;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: $black-blue-10;
+  }
+  .circle-line {
+    box-sizing: content-box;
+    z-index: 1;
+    position: absolute;
+    width: 530px;
+    height: 530px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid $black-blue-20;
+    border-radius: 50%;
+    .period-name {
+      position: absolute;
+      left: 95%;
+      top: 65px;
+      font-size: 20px;
+      font-weight: 700;
+      user-select: none;
+
+      color: transparent;
+      transition: color 0.7s ease; 
+
+      &.animate {
+        color: $black-blue; 
+      }
+    }
+  }
+  .heading {
+    &__container {
+      position: relative;
+    }
+    &__text {
+      color: $black-blue;
+      font-size: 56px;
+      font-weight: 700;
+      width: 353px;
+      line-height: 120%;
+    }
+    &__border {
+      position: absolute;
+      left: -81px;
+      top: 10px;
+      width: 5px;
+      height: 120px;
+      background: linear-gradient(to bottom, $blue, $purple);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

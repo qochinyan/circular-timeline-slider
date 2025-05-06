@@ -1,0 +1,32 @@
+@use "../../styles/vars.scss" as *;
+@use "../../styles/mixins.scss" as *;
+
+.circles-container {
+  position: relative;
+  width: 530px;
+  height: 530px;
+  @include flex(row, center, center);
+  .circle-box {
+    position: absolute;
+    transition: transform 1s ease-in-out, background 0.4s ease-in-out, color 0.4s ease-in-out, width 0.4s ease-in-out,
+      height 0.4s ease-in-out;
+    border-radius: 50%;
+    background: $black-blue;
+    color: white;
+    @include flex(column, center, center);
+    font-size: 20px;
+    width: 6px;
+    height: 6px;
+    color: transparent;
+    user-select: none;
+    cursor: pointer;
+    &.active,
+    &:hover {
+      background: $bg-white;
+      color: $black-blue;
+      border: 1px solid $black-blue;
+      width: 56px;
+      height: 56px;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/vars.scss" as *;
+
+.switcher-button {
+  &__container {
+    border-radius: 50%;
+    //  time button styles
+    background-color: transparent;
+    @include flex();
+    transition: 0.5s ease;
+    &.time-button {
+      width: 50px;
+      height: 50px;
+      border: 1px solid $black-blue-20;
+      .switcher-button__arrow {
+        margin-left: 3px;
+        width: 9px;
+        height: 9px;
+        border-left: 2px solid $black-blue-50;
+        border-bottom: 2px solid $black-blue-50;
+        transform: rotate(45deg);
+      }
+      &.active {
+        &:hover {
+          background-color: #fff;
+        }
+        cursor: pointer;
+        border: 1px solid $black-blue-50;
+        .switcher-button__arrow {
+          border-left: 2px solid $black-blue;
+          border-bottom: 2px solid $black-blue;
+        }
+      }
+      //   mobile time period switcher
+      &.mobile {
+        width: 25px;
+        height: 25px;
+        &.active {
+          .switcher-button__arrow {
+          }
+        }
+      }
+    }
+    //  slider button styles
+    &.slider-button {
+      cursor: pointer;
+
+      width: 40px;
+      height: 40px;
+      border: none;
+      box-shadow: 0px 0px 15px #3877EE1A;
+      background-color: #fff;
+      .switcher-button__arrow {
+        margin-left: 3px;
+        width: 9px;
+        height: 9px;
+        border-left: 2px solid $blue;
+        border-bottom: 2px solid $blue;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

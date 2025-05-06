@@ -1,0 +1,9 @@
+# keep these files in Git:
+!package.json
+!package-lock.json
+!yarn.lock
+
+# but ignore node_modules and build output
+/node_modules/
+/dist/
+/build/
