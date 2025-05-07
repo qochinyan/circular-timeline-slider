@@ -1,55 +1,44 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
-    publicPath: "/",
+    clean: true,
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
   module: {
     rules: [
-      // TypeScript
       {
-        test: /\.tsx?$/,
+        test: /\.(ts|tsx)$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },
-      // SCSS-модули
       {
-        test: /\.module\.scss$/,
-        use: ["style-loader", "css-loader?modules", "sass-loader"],
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
-      // Обычный SCSS
       {
-        test: /\.scss$/,
-        exclude: /\.module\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
-      },
-      // CSS для Swiper
-      {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
-      },
-      // Шрифты
-      {
-        test: /\.(woff2?|eot|ttf|otf)$/i,
+        test: /\.(png|svg|jpg|gif)$/,
         type: "asset/resource",
-        generator: {
-          filename: "fonts/[name][ext]",
-        },
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: "./public/index.html" })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
+    new MiniCssExtractPlugin(),
+  ],
   devServer: {
-    static: { directory: path.join(__dirname, "public") },
-    compress: true,
+    static: "./dist",
     port: 3000,
-    historyApiFallback: true,
+    hot: true,
+    open: true,
   },
 };

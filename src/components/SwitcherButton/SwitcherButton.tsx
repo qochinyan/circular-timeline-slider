@@ -9,13 +9,14 @@ type SwitcherButtonPropsType = {
   active: boolean;
   style?: any;
   onClick?: () => void;
+  mobile?: boolean;
 };
 
-export default function SwitcherButton({ type, active, style, onClick }: SwitcherButtonPropsType) {
+export default function SwitcherButton({ type, active, style, onClick, mobile }: SwitcherButtonPropsType) {
   return (
     <button
       style={style}
-      className={`switcher-button__container ${active && "active"} ${
+      className={`switcher-button__container ${active && "switcher-button__container--active"} ${mobile && "mobile"} ${
         type == buttonType.SliderSwitcher ? "slider-button" : type == buttonType.TimeSwitcher ? "time-button" : ""
       }`}
       onClick={onClick}
