@@ -28,8 +28,8 @@
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/<your-username>/<repo-name>.git
-   cd <repo-name>
+   git clone https://github.com/qochinyan/circular-timeline-slider.git
+   cd circular-timeline-slider
    ```
 2. Install dependencies:
 
@@ -46,24 +46,32 @@
 
 ```
 ├── public/
-│   └── index.html        # HTML template
+│   └── index.html
 ├── src/
 │   ├── components/
-│   │   └── TimeSliderBlock/
-│   │       ├── AnimatedCircles.tsx
-│   │       ├── TimeSliderBlock.tsx
-│   │       ├── types.ts
-│   │       ├── sampleData.ts
-│   │       └── AnimatedCircles.scss
+│   │   ├── TimeSliderBlock/
+│   │   │   ├── AnimatedCircles.tsx
+│   │   │   ├── TimeSliderBlock.tsx
+│   │   │   ├── types.ts
+│   │   │   ├── sampleData.ts
+│   │   │   └── AnimatedCircles.scss
+│   │   ├── SwitcherButton/
+│   │   │   ├── SwitcherButton.tsx
+│   │   │   └── SwitcherButton.scss
+│   │   ├── AnimatedNumber/
+│   │   │   └── AnimatedNumber.tsx
 │   ├── styles/
-│   │   ├── vars.scss     # SCSS variables
-│   │   └── mixins.scss   # SCSS mixins
+│   │   ├── vars.scss    
+│   │   ├── mixins.scss   
+│   │   └── global.scss
 │   ├── App.tsx
-│   ├── index.tsx
-│   └── global.scss
+│   ├── App.scss
+│   └── index.tsx
+├── .gitignore
 ├── tsconfig.json
 ├── webpack.config.js
 ├── package.json
+├── package-lock.json
 └── README.md
 ```
 
@@ -89,4 +97,4 @@ function App() {
 
 ## License
 
-MIT © Your Name
+MIT © Aren Qochinyan
