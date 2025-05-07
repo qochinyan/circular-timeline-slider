@@ -50,14 +50,16 @@
 ├── src/
 │   ├── components/
 │   │   ├── TimeSliderBlock/
-│   │   │   ├── AnimatedCircles.tsx
 │   │   │   ├── TimeSliderBlock.tsx
 │   │   │   ├── types.ts
 │   │   │   ├── sampleData.ts
-│   │   │   └── AnimatedCircles.scss
+│   │   │   └── TimeSliderBlock.scss
 │   │   ├── SwitcherButton/
 │   │   │   ├── SwitcherButton.tsx
 │   │   │   └── SwitcherButton.scss
+│   │   ├── AnimatedCircles/
+│   │   │   ├── AnimatedCircles.tsx
+│   │   │   └── AnimatedCircles.scss
 │   │   ├── AnimatedNumber/
 │   │   │   └── AnimatedNumber.tsx
 │   ├── styles/
