@@ -9,6 +9,9 @@
   padding: 12vh 0 5vh 80px;
   @include flex(column, start, space-between, 0px);
   position: relative;
+  .mobile-slider-switcher__container {
+    display: none;
+  }
   .slider__switcher {
     @include flex(column, start, center, 20px);
     .switcher__description {
@@ -65,7 +68,6 @@
           overflow: hidden;
           .swiper-box {
             width: 1280px;
-
             .swiper-wrapper {
               display: flex;
             }
@@ -190,11 +192,33 @@
     padding: 10vh 20px 20px 20px;
 
     @include flex(column, start, space-between, 0);
-    .slider__switcher--mobile {
+    .mobile-slider-switcher__container {
       display: flex;
-      gap: 10.67px;
-      .switcher-buttons__box {
-        gap: 8.33px;
+      position: relative;
+      width: 100%;
+      .slider__switcher--mobile {
+        display: flex;
+        gap: 10.67px;
+        .switcher-buttons__box {
+          gap: 8.33px;
+        }
+      }
+      .slider-dots {
+        position: absolute;
+        left: 50%;
+        bottom: 15px;
+        transform: translate(-50%, 0);
+        @include flex(row, center, center, 10px);
+        .slider-dot {
+          cursor: pointer;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: $black-blue-40;
+          &__active {
+            background-color: $black-blue;
+          }
+        }
       }
     }
     .horizontal-line,
@@ -221,10 +245,6 @@
       span {
         font-size: 56px;
         line-height: 73px;
-        .year-from {
-        }
-        .year-to {
-        }
       }
     }
     .slider__container {
@@ -255,7 +275,7 @@
           .swiper-wrapper {
             width: 100%;
             position: absolute;
-            left: -78px;
+            left: -65px;
           }
           .swiper-slide {
             max-width: 166px;
@@ -272,7 +292,6 @@
       }
     }
   }
-
   .swiper-box {
     width: auto !important; // allow fluid width
     gap: 15px !important;

@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { useEffect, useRef, useState } from "react";
 import { AnimatedNumber } from "../AnimatedNumber/AnimatedNumber";
-import AnimatedCircles from "../AnimateCircles/AnimatedCircles";
+import AnimatedCircles from "../AnimatedCircles/AnimatedCircles";
 
 export default function TimeSliderBlock({ sampleData }: { sampleData: TimePeriodData[] }) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
@@ -120,10 +120,10 @@ export default function TimeSliderBlock({ sampleData }: { sampleData: TimePeriod
               loop={false}
               breakpoints={{
                 0: {
-                  slidesPerView:2,
+                  slidesPerView: 2,
                   spaceBetween: 20,
-                  watchOverflow:true,
-                  centeredSlides:true
+                  watchOverflow: true,
+                  centeredSlides: true,
                 },
                 768: {
                   slidesPerView: 2.5,
@@ -159,33 +159,48 @@ export default function TimeSliderBlock({ sampleData }: { sampleData: TimePeriod
           )}
         </div>
       </div>
-      <div className="slider__switcher slider__switcher--mobile">
-        <span className="switcher__description">
-          {currentSlideIndex + 1 < 10 ? "0" + (currentSlideIndex + 1) : currentSlideIndex + 1}/
-          {sampleData.length > 10 ? sampleData.length : "0" + sampleData.length}
-        </span>
-        <div className="switcher-buttons__box">
-          <SwitcherButton
-            type={buttonType.TimeSwitcher}
-            active={currentSlideIndex > 0 && true}
-            onClick={() => {
-              setCurrentSlideIndex((index) => {
-                return index > 0 ? index - 1 : index;
-              });
-            }}
-            mobile={true}
-          />
-          <SwitcherButton
-            style={{ transform: "rotate(180deg)" }}
-            type={buttonType.TimeSwitcher}
-            active={currentSlideIndex < sampleData.length - 1 && true}
-            onClick={() => {
-              setCurrentSlideIndex((index) => {
-                return index < sampleData.length - 1 ? index + 1 : index;
-              });
-            }}
-            mobile={true}
-          />
+      <div className="mobile-slider-switcher__container">
+        <div className="slider__switcher slider__switcher--mobile">
+          <span className="switcher__description">
+            {currentSlideIndex + 1 < 10 ? "0" + (currentSlideIndex + 1) : currentSlideIndex + 1}/
+            {sampleData.length > 10 ? sampleData.length : "0" + sampleData.length}
+          </span>
+          <div className="switcher-buttons__box">
+            <SwitcherButton
+              type={buttonType.TimeSwitcher}
+              active={currentSlideIndex > 0 && true}
+              onClick={() => {
+                setCurrentSlideIndex((index) => {
+                  return index > 0 ? index - 1 : index;
+                });
+              }}
+              mobile={true}
+            />
+            <SwitcherButton
+              style={{ transform: "rotate(180deg)" }}
+              type={buttonType.TimeSwitcher}
+              active={currentSlideIndex < sampleData.length - 1 && true}
+              onClick={() => {
+                setCurrentSlideIndex((index) => {
+                  return index < sampleData.length - 1 ? index + 1 : index;
+                });
+              }}
+              mobile={true}
+            />
+          </div>
+        </div>
+        <div className="slider-dots">
+          {sampleData.map((e, i) => {
+            return (
+              <span
+                key={i}
+                className={`slider-dot ${i === currentSlideIndex && "slider-dot__active"}`}
+                onClick={() => {
+                  setCurrentSlideIndex(i);
+                }}
+              ></span>
+            );
+          })}
         </div>
       </div>
     </div>
